@@ -39,8 +39,8 @@ start_protected_mode:
   mov esp, ebp
 
   ; main
-  mov ebx, MESSAGE
-  call print_string
+  ;mov ebx, MESSAGE
+  ;call print_string
 
   call KERNEL_OFFSET
   jmp $
