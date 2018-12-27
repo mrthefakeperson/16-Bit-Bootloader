@@ -43,16 +43,6 @@ start_protected_mode:
   call print_string
 
   call KERNEL_OFFSET
-  ;mov ax, [KERNEL_OFFSET]
-  ;cmp ax, 0x1a2b
-  ;jne test_error
-  ;mov ebx, MESSAGE2
-  ;jmp test_cont
-  ;test_error:
-  ;mov ebx, ERROR_MSG
-  ;test_cont:
-  ;call print_string
-
   jmp $
 
 ; data (goes after the code, otherwise it gets executed)
@@ -70,6 +60,22 @@ db 0x55
 db 0xaa
 
 
+
+;[bits 16]
+;push bp
+;dec ax
+;mov bp, sp
+;dec ax
+;mov word [di-0x8], 0x8000
+;or ax, [bx+si]
+;dec ax
+;mov ax, [di-0x8]
+;mov byte [bx+si], 0x5a
+;nop
+;pop bp
+;ret
+
+;times 1024-($-$$) db 0
 
 ;mov ebx, MESSAGE2
 ;mov edx, 0xb8000
