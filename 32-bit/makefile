@@ -18,9 +18,8 @@ emulate_qemu: build/os-image
 	qemu-system-i386 build/os-image
 
 clean:
-	rm build/*
+	rm -rf build/*
 	touch build/_
 
 floppy: build/os-image
-	dd if=build/os-image of=build/floppy.img bs=512 count=2880
-	dd if=/dev/zero count=2879 bs=512 >> build/floppy.img
+	dd if=build/os-image of=build/floppy.img bs=512 count=2880 seek=2870 conv=sync
