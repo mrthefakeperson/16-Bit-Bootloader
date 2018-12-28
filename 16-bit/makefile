@@ -10,3 +10,7 @@ emulate_qemu:
 clean:
 	rm build/boot_sect.bin
 	touch build/_
+
+floppy: build/boot_sect.bin
+	dd if=build/boot_sect.bin of=build/floppy.img bs=512 count=2880
+	dd if=/dev/zero count=2879 bs=512 >> build/floppy.img
